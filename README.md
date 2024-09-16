@@ -15,7 +15,7 @@ Aplicativo para auxiliar no descarte consciente do lixo eletrônico por linhas.
 
 Antes de começar, certifique-se de ter os seguintes requisitos instalados:
 
-- [Python](https://www.python.org/) (3.x recomendado)
+- [Python](https://www.python.org/) (3.12 recomendado)
 - [pip](https://pip.pypa.io/en/stable/) (gerenciador de pacotes Python)
 
 ## Preparar o Ambiente
@@ -67,5 +67,5 @@ Certifique-se de que as imagens estejam organizadas no diretório `imagens/` con
 Execute o script para treinar o modelo. Certifique-se de que o TensorFlow esteja instalado e configurado corretamente.
 
 ```bash
-python train_model.py
+python treino.py
 ```
