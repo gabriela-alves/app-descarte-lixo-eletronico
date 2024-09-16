@@ -1,11 +1,3 @@
-O arquivo `.md` parece bem estruturado e claro. Apenas alguns pequenos ajustes podem ajudar a melhorar a clareza e a formatação:
-
-1. **Adicionar uma seção para Requisitos**: Pode ser útil incluir uma seção de requisitos para garantir que todos os pré-requisitos sejam conhecidos antes da configuração do ambiente.
-
-2. **Incluir instruções para rodar o projeto**: Após o treinamento do modelo, pode ser útil adicionar instruções para rodar ou testar o projeto.
-
-Aqui está uma versão ajustada:
-
 ```markdown
 # app-descarte-lixo-eletronico
 
