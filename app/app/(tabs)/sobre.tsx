@@ -31,36 +31,50 @@ export default function SobreNos(){
                 <View style={[styles.integrantes]}>
                     <Image source={require('@/assets/images/william.jpg')} style={[styles.foto]}/>
                     <View>
+                        <Text style={[styles.nome]}>Carlos Daniel Verdeiro</Text>
+                        <Text style={[]}>3° Ano Informática</Text>
+                    </View>
+                </View>
+                <View style={[styles.integrantes]}>
+                    <Image source={require('@/assets/images/william.jpg')} style={[styles.foto]}/>
+                    <View>
+                        <Text style={[styles.nome]}>Wellington Aparecido Gutierres Silva</Text>
+                        <Text style={[]}>3° Ano Informática</Text>
+                    </View>
+                </View>
+                <View style={[styles.integrantes]}>
+                    <Image source={require('@/assets/images/william.jpg')} style={[styles.foto]}/>
+                    <View>
                         <Text style={[styles.nome]}>William Eduardo Di Martini Minorelli</Text>
-                        <Text style={[]}>Segundo Ano Informática</Text>
+                        <Text style={[]}>2° Ano Informática</Text>
                     </View>
                 </View>
                 <View style={[styles.integrantes]}>
                     <Image source={require('@/assets/images/lucas.jpg')} style={[styles.foto]}/>
                     <View>
                         <Text style={[styles.nome]}>Lucas Vinicius Lourenço da Silva</Text>
-                        <Text style={[]}>Segundo Ano Informática</Text>
+                        <Text style={[]}>2° Ano Informática</Text>
                     </View>
                 </View>
                 <View style={[styles.integrantes]}>
                     <Image source={require('@/assets/images/kayan.jpg')} style={[styles.foto]}/>
                     <View>
                         <Text style={[styles.nome]}>Kayan dos Santo Bezerra</Text>
-                        <Text style={[]}>Segundo Ano Informática</Text>
+                        <Text style={[]}>2° Ano Informática</Text>
                     </View>
                 </View>
                 <View style={[styles.integrantes]}>
                     <Image source={require('@/assets/images/murilo.jpg')} style={[styles.foto]}/>
                     <View>
                         <Text style={[styles.nome]}>Murilo Oliveira Cassemiro</Text>
-                        <Text style={[]}>Segundo Ano Informática</Text>
+                        <Text style={[]}>2° Ano Informática</Text>
                     </View>
                 </View>
                 <View style={[styles.integrantes]}>
                     <Image source={require('@/assets/images/julia.jpg')} style={[styles.foto]}/>
                     <View>
                         <Text style={[styles.nome]}>Julia Moura Gonçalves</Text>
-                        <Text style={[]}>Primeiro Ano Informática</Text>
+                        <Text style={[]}>1° Ano Informática</Text>
                     </View>
                 </View>
             </View>
