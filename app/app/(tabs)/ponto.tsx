@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
 
     mapa:{
         // Definindo altura e largura fixas para garantir um formato retangular
-        height: 650, // Ajuste conforme necessário
+        height: 200, // Ajuste conforme necessário
         width: 'auto', // Largura total do contêiner
         overflow: 'hidden', // Para evitar overflow se necessário
         borderRadius: 15,
