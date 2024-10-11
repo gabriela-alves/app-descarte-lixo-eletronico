@@ -18,7 +18,7 @@ export default function Biomas(){
     return(
         <View style={[styles.container]}>
             <View style={[styles.topo]}>
-                <TouchableOpacity activeOpacity={0.5} onPress={() => navigation.navigate('Lixo')}>
+                <TouchableOpacity activeOpacity={0.5} onPress={() => navigation.navigate('Home')}>
                     <Image source={require('@/assets/images/seta.png')} style={styles.seta}/>
                 </TouchableOpacity>
                 <Text style={[styles.titulo]}>Biomas</Text>

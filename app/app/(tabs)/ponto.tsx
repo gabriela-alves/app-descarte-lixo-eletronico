@@ -24,15 +24,11 @@ export default function PontoColeta(){
     return(
         <View style={styles.container}>
             <View style={styles.topo}>
-                <TouchableOpacity style={styles.sair} activeOpacity={0.5} onPress={() => navigation.navigate('Lixo')}>
+                <TouchableOpacity style={styles.sair} activeOpacity={0.5} onPress={() => navigation.navigate('Home')}>
                     <Image source={require('@/assets/images/seta.png')} style={styles.seta}/>
                 </TouchableOpacity>
                 <View>
-                    <Text style={styles.titulo}>Pontos de Coleta</Text>
-                    <View>
-                        <Text>Etec Prof. Adolpho Arruda Mello</Text>
-                        <Text>Rua Ribeiro de Barros, 1770, Centro</Text>
-                    </View>
+                    <Text style={styles.titulo}>Pontos de Descarte</Text>
                 </View>
             </View>
             <View style={[styles.mapa, styles.sombra]}>

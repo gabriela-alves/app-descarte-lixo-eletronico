@@ -54,7 +54,7 @@ export default function Home() {
                     <TouchableOpacity 
                       style={[styles.button, styles.laranjaC]} 
                       activeOpacity={0.7}
-                      onPress={() => navigation.navigate('Coleta')}
+                      onPress={() => navigation.navigate('Descartes')}
                     >
                         <Image style={[styles.imagem]} source={require('@/assets/images/lixo.png')}/>
                         <Text style={[styles.subTitulo]}>Pontos de Descarte</Text>

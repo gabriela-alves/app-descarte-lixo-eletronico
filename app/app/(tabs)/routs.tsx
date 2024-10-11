@@ -4,7 +4,6 @@ import PontoColeta from "./ponto";
 import HomeScreen from './index';
 import LixoScreen from "./tela";
 import Biomas from "./biomas";
-import Camera from "./camera";
 
 import { Ionicons } from "@expo/vector-icons";
 
@@ -40,7 +39,7 @@ export function Routes(){
                 }}
             />
             <Tab.Screen
-                name="Coleta"
+                name="Descartes"
                 component={PontoColeta}
                 options={{
                     headerShown: false,
