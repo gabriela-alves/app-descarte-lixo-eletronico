@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+
 import { 
   View, 
   Text,
@@ -7,6 +9,8 @@ import {
 } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/native-stack';
+import * as ImagePicker from 'expo-image-picker';
+
 
 export default function Index() {
   type RootStackParamList = {
@@ -15,8 +19,31 @@ export default function Index() {
   };
   
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+  const [image, setImage] = useState(null);
 
+  const openCamera = async () => {
+    // Solicita permissões da câmera
+    const permissionResult = await ImagePicker.requestCameraPermissionsAsync();
+
+    if (permissionResult.granted === false) {
+      alert('Você precisa conceder permissão para usar a câmera!');
+      return;
+    }
+
+    const result = await ImagePicker.launchCameraAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+    }
+  };
   return (
+
+    
     <View style={styles.container}>
       {/* Título */}
       <Text style={styles.titulo}>Descarte</Text>
@@ -26,7 +53,7 @@ export default function Index() {
           <TouchableOpacity 
             style={[styles.botao_Scan, styles.sombra]} 
             activeOpacity={0.7}  
-            onPress={() => navigation.navigate('Camera')}
+            onPress={openCamera}
           >
             <View style={styles.caixaTitulo}>
               <Image source={require('@/assets/images/camera.png')} style={styles.imagem_cima}/>
