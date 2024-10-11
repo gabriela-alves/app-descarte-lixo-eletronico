@@ -22,30 +22,27 @@ export default function SobreNos(){
                 <Text style={[styles.titulo]}>Sobre</Text>
             </View>
             <Text style={[styles.justifiedText]}>Os biomas, como florestas tropicais, savanas, desertos e tundras, desempenham papéis cruciais na regulação do clima, 
-                na preservação da biodiversidade e na manutenção dos ciclos naturais. Contudo, a degradação ambiental causada pelo lixo 
-                eletrônico tem se tornado uma preocupação crescente. O crescimento acelerado da tecnologia resulta em um ciclo de obsolescência 
-                programada, onde dispositivos eletrônicos são descartados rapidamente após o término de sua vida útil. Estima-se que mais de 50 
-                milhões de toneladas de lixo eletrônico sejam geradas anualmente no mundo
+                na preservação da biodiversidade.
             </Text>
             <View style={[styles.gap10]}>
                 <View style={[styles.integrantes]}>
-                    <Image source={require('@/assets/images/william.jpg')} style={[styles.foto]}/>
+                    <Image source={require('@/assets/images/carlos.jpg')} style={[styles.foto]}/>
                     <View>
                         <Text style={[styles.nome]}>Carlos Daniel Verdeiro</Text>
                         <Text style={[]}>3° Ano Informática</Text>
                     </View>
                 </View>
                 <View style={[styles.integrantes]}>
-                    <Image source={require('@/assets/images/william.jpg')} style={[styles.foto]}/>
+                    <Image source={require('@/assets/images/wellinton.jpg')} style={[styles.foto]}/>
                     <View>
                         <Text style={[styles.nome]}>Wellington Aparecido Gutierres Silva</Text>
                         <Text style={[]}>3° Ano Informática</Text>
                     </View>
                 </View>
                 <View style={[styles.integrantes]}>
-                    <Image source={require('@/assets/images/william.jpg')} style={[styles.foto]}/>
+                    <Image source={require('@/assets/images/kayan.jpg')} style={[styles.foto]}/>
                     <View>
-                        <Text style={[styles.nome]}>William Eduardo Di Martini Minorelli</Text>
+                        <Text style={[styles.nome]}>Kayan dos Santo Bezerra</Text>
                         <Text style={[]}>2° Ano Informática</Text>
                     </View>
                 </View>
@@ -57,16 +54,16 @@ export default function SobreNos(){
                     </View>
                 </View>
                 <View style={[styles.integrantes]}>
-                    <Image source={require('@/assets/images/kayan.jpg')} style={[styles.foto]}/>
+                    <Image source={require('@/assets/images/murilo.jpg')} style={[styles.foto]}/>
                     <View>
-                        <Text style={[styles.nome]}>Kayan dos Santo Bezerra</Text>
+                        <Text style={[styles.nome]}>Murilo Oliveira Cassemiro</Text>
                         <Text style={[]}>2° Ano Informática</Text>
                     </View>
                 </View>
                 <View style={[styles.integrantes]}>
-                    <Image source={require('@/assets/images/murilo.jpg')} style={[styles.foto]}/>
+                    <Image source={require('@/assets/images/william.jpg')} style={[styles.foto]}/>
                     <View>
-                        <Text style={[styles.nome]}>Murilo Oliveira Cassemiro</Text>
+                        <Text style={[styles.nome]}>William Eduardo Di Martini Minorelli</Text>
                         <Text style={[]}>2° Ano Informática</Text>
                     </View>
                 </View>

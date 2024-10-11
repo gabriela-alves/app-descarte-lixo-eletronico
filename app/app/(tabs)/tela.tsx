@@ -46,7 +46,12 @@ export default function Index() {
     
     <View style={styles.container}>
       {/* Título */}
-      <Text style={styles.titulo}>Descarte</Text>
+      <View style={[styles.topo]}>
+        <TouchableOpacity activeOpacity={0.5} onPress={() => navigation.navigate('Home')}>
+          <Image source={require('@/assets/images/seta.png')} style={styles.seta}/>
+        </TouchableOpacity>
+        <Text style={[styles.titulo]}>Descarte</Text>
+      </View>
 
       {/* Botão de Escaneamento */}
       <View style={styles.btn}>
@@ -95,6 +100,18 @@ const styles = StyleSheet.create({
     marginTop: 50,
     margin: 20,
     gap: 8
+  },
+
+  topo:{
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
+    gap: 10,
+  },
+
+  seta:{
+    width: 50,
+    height: 50,
   },
 
   btn:{
