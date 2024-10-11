@@ -60,3 +60,6 @@ Execute o script para treinar o modelo. Certifique-se de que o TensorFlow esteja
 ```bash
 python treino.py
 ```
+
+
+pip install Pillow

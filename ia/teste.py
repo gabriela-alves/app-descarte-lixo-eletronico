@@ -21,7 +21,7 @@ def classificar_imagem(img_path, model):
 modelo_carregado = tf.keras.models.load_model('modelo_identificacao.keras')
 
 # Caminho para a imagem que deseja testar
-img_teste_path = 'teste_teclado.jpg'
+img_teste_path = 'teclado.jpg'
 
 # Classificar a imagem de teste
 classificar_imagem(img_teste_path, modelo_carregado)
