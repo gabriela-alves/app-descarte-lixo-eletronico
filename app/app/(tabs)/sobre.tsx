@@ -21,10 +21,25 @@ export default function SobreNos(){
                 </TouchableOpacity>
                 <Text style={[styles.titulo]}>Sobre</Text>
             </View>
-            <Text style={[styles.justifiedText]}>Os biomas, como florestas tropicais, savanas, desertos e tundras, desempenham papéis cruciais na regulação do clima, 
-                na preservação da biodiversidade.
+            <Text style={[styles.justifiedText]}>Esse projeto foi desenvolvido pelos alunos do 1º, 2º e 3º ano do ensino médio integrado ao 
+                técnico Informática para Internet da ETEC Prof.º Adolpho Arruda Mello, sob orientação das professoras Gabriela Alves do Nascimento 
+                Silva e Thamires Caetano de Amorin.
             </Text>
             <View style={[styles.gap10]}>
+                <View style={[styles.integrantes]}>
+                    <Image source={require('@/assets/images/gabi.jpg')} style={[styles.foto]}/>
+                    <View>
+                        <Text style={[styles.nome]}>Gabriela Alves do Nascimento Silva</Text>
+                        <Text style={[]}>Professora Orientadora</Text>
+                    </View>
+                </View>
+                <View style={[styles.integrantes]}>
+                    <Image source={require('@/assets/images/thamires.jpg')} style={[styles.foto]}/>
+                    <View>
+                        <Text style={[styles.nome]}>Thamires Caetano de Amorin</Text>
+                        <Text style={[]}>Professora Orientadora</Text>
+                    </View>
+                </View>
                 <View style={[styles.integrantes]}>
                     <Image source={require('@/assets/images/carlos.jpg')} style={[styles.foto]}/>
                     <View>
@@ -120,6 +135,7 @@ const styles = StyleSheet.create({
     justifiedText: {
         textAlign: 'justify', // Justificando o texto
         fontSize: 16,
+        marginBottom: 10,
         color: '#333',
     },
 

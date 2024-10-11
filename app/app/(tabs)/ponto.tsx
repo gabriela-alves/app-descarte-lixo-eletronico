@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { 
     View,
     Text,
@@ -9,32 +10,69 @@ import MapView, { Marker } from 'react-native-maps';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/native-stack';
 
-export default function PontoColeta(){
-    const initialRegion = {
-        latitude: -23.0978, // Latitude da Etec
-        longitude: -51.3883, // Longitude da Etec
+export default function PontoColeta() {
+    const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+
+    // State to manage the map's region
+    const [region, setRegion] = useState({
+        latitude: -23.0978, // Initial latitude
+        longitude: -51.3883, // Initial longitude
         latitudeDelta: 0.01,
         longitudeDelta: 0.01,
+    });
+
+    const locations = [
+        {
+            name: "Sam’s Club",
+            address: "Av. Salim Farah Maluf, 17",
+            neighborhood: "Jardim das Rosas",
+            coordinate: { latitude: -23.0978, longitude: -51.3883 },
+        },
+        {
+            name: "Magazine Luiza do Prudenshopping",
+            address: "Av. Manoel Goulart, 2400",
+            neighborhood: "Jardim das Rosas",
+            coordinate: { latitude: -23.0974, longitude: -51.3896 },
+        },
+        {
+            name: "Cooperlix",
+            address: "Rua Helena Ferrante Borguinhão, S/N",
+            neighborhood: "Distrito Industrial",
+            coordinate: { latitude: -23.0960, longitude: -51.3870 },
+        },
+    ];
+
+    const handleLocationPress = (coordinate) => {
+        setRegion({
+            ...region,
+            latitude: coordinate.latitude,
+            longitude: coordinate.longitude,
+        });
     };
 
-    type RootStackParamList = {
-        Sobre: undefined;
-    };
-    const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();;
-    return(
+    return (
         <View style={styles.container}>
             <View style={styles.topo}>
                 <TouchableOpacity style={styles.sair} activeOpacity={0.5} onPress={() => navigation.navigate('Home')}>
-                    <Image source={require('@/assets/images/seta.png')} style={styles.seta}/>
+                    <Image source={require('@/assets/images/seta.png')} style={styles.seta} />
                 </TouchableOpacity>
                 <View>
                     <Text style={styles.titulo}>Pontos de Descarte</Text>
                 </View>
             </View>
+            <View style={[styles.locais]}>
+                {locations.map((location, index) => (
+                    <TouchableOpacity activeOpacity={0.5} key={index} style={[styles.local]} onPress={() => handleLocationPress(location.coordinate)}>
+                        <Text style={[styles.negrito, styles.enderecoTxt]}>{location.name}</Text>
+                        <Text style={[styles.enderecoTxt]}>{location.address}</Text>
+                        <Text style={[styles.enderecoTxt]}>{location.neighborhood}</Text>
+                    </TouchableOpacity>
+                ))}
+            </View>
             <View style={[styles.mapa, styles.sombra]}>
                 <MapView 
                     style={styles.map} 
-                    initialRegion={initialRegion}
+                    region={region} // Use the dynamic region state here
                 >
                     {/* Marcador para a Etec */}
                     <Marker 
@@ -45,7 +83,7 @@ export default function PontoColeta(){
                 </MapView>
             </View>
         </View>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
@@ -57,42 +95,47 @@ const styles = StyleSheet.create({
         margin: 20,
         gap: 8
     },
-
+    negrito:{
+        fontWeight: 'bold',
+    },
     mapa:{
-        // Definindo altura e largura fixas para garantir um formato retangular
-        height: 200, // Ajuste conforme necessário
-        width: 'auto', // Largura total do contêiner
-        overflow: 'hidden', // Para evitar overflow se necessário
+        height: 300,
+        width: 'auto',
+        overflow: 'hidden',
         borderRadius: 15,
     },
-    
     map: {
         flex: 1,
-        width: '100%', // Largura total do contêiner pai
-        height: '100%', // Altura total do contêiner pai
+        width: '100%',
+        height: '100%',
     },
-
     titulo: {
         color: 'gray',
         fontWeight: 'bold',
         fontSize: 27,
         marginTop: 6,
     },
-
     topo:{
         flexDirection: 'row',
         alignItems: 'flex-start',
-        marginBottom: 10, // Adicionando margem para espaçamento
+        marginBottom: 10,
         paddingBottom: 10,
     },
-
     sair:{
         marginRight: 10,
     },
-    
     seta:{
         width: 50,
         height: 50,
+    },
+    locais:{
+        marginBottom: 10,
+        gap: 10,
+    },
+    local:{
+    },
+    enderecoTxt:{
+        fontSize: 20,
     },
     
     sombra: {

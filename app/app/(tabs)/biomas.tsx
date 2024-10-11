@@ -3,6 +3,7 @@ import {
     Text,
     Image,
     TouchableOpacity,
+    TouchableWithoutFeedback,
     StyleSheet,
 } from "react-native";
 import { useNavigation } from '@react-navigation/native';
