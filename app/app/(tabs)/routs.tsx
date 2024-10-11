@@ -4,6 +4,7 @@ import PontoColeta from "./ponto";
 import HomeScreen from './index';
 import LixoScreen from "./tela";
 import Biomas from "./biomas";
+import Camera from "./camera";
 
 import { Ionicons } from "@expo/vector-icons";
 
@@ -77,7 +78,7 @@ export function Routes(){
                         return <Ionicons size={size} color={color} name="people-outline"/>
                     }
                 }}
-            />
+            />  
         </Tab.Navigator>
     )
 }

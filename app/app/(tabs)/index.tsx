@@ -44,8 +44,7 @@ export default function Home() {
         <ScrollView style={[styles.container]} scrollEnabled={false} nestedScrollEnabled={false}>
             <View>
                 <View style={[styles.botao_Scan]}>
-                    <Text style={[styles.titulo]}>Nome Aplicativo</Text>
-                    <Text style={[styles.subTitulo]}>Bem Vindo!</Text>
+                    <Image style={[styles.logo]} source={require('@/assets/images/logoFundo.png')}/>
                 </View>
                 <View style={[styles.buttons, styles.gap20, styles.top20]}>
                     <TouchableOpacity style={[styles.button, styles.azulC]} activeOpacity={0.7} onPress={openCamera}>
@@ -131,14 +130,22 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     textAlign: 'center',
   },
+
+  logo:{
+    height: 100,
+    width: 204,
+  },
+
   buttons:{
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-around',
   },
+
   botao_Scan: {
     flexDirection: 'column',
-    alignItems: 'flex-start',
+    alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: '#E0E0E0',
     borderWidth: 0.5,
     borderColor: '#fff',
