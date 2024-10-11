@@ -44,7 +44,7 @@ export default function Home() {
         <ScrollView style={[styles.container]} scrollEnabled={false} nestedScrollEnabled={false}>
             <View>
                 <View style={[styles.botao_Scan]}>
-                    <Image style={[styles.logo]} source={require('@/assets/images/logoFundo.png')}/>
+                    <Image style={[styles.logo]} source={require('@/assets/images/logoFundo.jpg')}/>
                 </View>
                 <View style={[styles.buttons, styles.gap20, styles.top20]}>
                     <TouchableOpacity style={[styles.button, styles.azulC]} activeOpacity={0.7} onPress={openCamera}>
