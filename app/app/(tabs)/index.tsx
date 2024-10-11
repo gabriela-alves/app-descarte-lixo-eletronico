@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+
 import { 
   View, 
   Text,
@@ -9,10 +10,34 @@ import {
 } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/native-stack';
+import * as ImagePicker from 'expo-image-picker';
+
 
 export default function Home() {
     type RootStackParamList = {
       Sobre: undefined;
+    };
+    const [image, setImage] = useState(null);
+
+    const openCamera = async () => {
+      // Solicita permissões da câmera
+      const permissionResult = await ImagePicker.requestCameraPermissionsAsync();
+  
+      if (permissionResult.granted === false) {
+        alert('Você precisa conceder permissão para usar a câmera!');
+        return;
+      }
+  
+      const result = await ImagePicker.launchCameraAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
+      });
+  
+      if (!result.canceled) {
+        setImage(result.assets[0].uri);
+      }
     };
     const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();;
     return (
@@ -23,7 +48,7 @@ export default function Home() {
                     <Text style={[styles.subTitulo]}>Bem Vindo!</Text>
                 </View>
                 <View style={[styles.buttons, styles.gap20, styles.top20]}>
-                    <TouchableOpacity style={[styles.button, styles.azulC]} activeOpacity={0.7}>
+                    <TouchableOpacity style={[styles.button, styles.azulC]} activeOpacity={0.7} onPress={openCamera}>
                         <Image style={[styles.imagem]} source={require('@/assets/images/cameraS.png')}/>
                         <Text style={[styles.subTitulo]}>Identifique o seu lixo</Text>
                     </TouchableOpacity>
