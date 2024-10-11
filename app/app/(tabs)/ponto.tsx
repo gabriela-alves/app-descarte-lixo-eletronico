@@ -55,7 +55,11 @@ export default function PontoColeta(){
 const styles = StyleSheet.create({
     container:{
         flex: 1,
-        margin: 40,
+        backgroundColor: "#F3F3F3",
+        justifyContent: 'flex-start',
+        marginTop: 50,
+        margin: 20,
+        gap: 8
     },
 
     mapa:{

@@ -44,7 +44,7 @@ export default function Home() {
         <ScrollView style={[styles.container]} scrollEnabled={false} nestedScrollEnabled={false}>
             <View>
                 <View style={[styles.botao_Scan]}>
-                    <Image style={[styles.logo]} source={require('@/assets/images/logoFundo.jpg')}/>
+                    <Image style={[styles.logo]} source={require('@/assets/images/logo.png')}/>
                 </View>
                 <View style={[styles.buttons, styles.gap20, styles.top20]}>
                     <TouchableOpacity style={[styles.button, styles.azulC]} activeOpacity={0.7} onPress={openCamera}>
@@ -90,8 +90,10 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 10,
-    margin: 30,
+    backgroundColor: "#F3F3F3",
+    marginTop: 50,
+    margin: 20,
+    gap: 8
   },
   gap20:{
     gap: 20,
@@ -146,7 +148,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#E0E0E0',
+    backgroundColor: '#1E2035',
     borderWidth: 0.5,
     borderColor: '#fff',
     height: 110,

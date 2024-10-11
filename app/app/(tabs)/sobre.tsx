@@ -29,35 +29,30 @@ export default function SobreNos(){
             </Text>
             <View style={[styles.gap10]}>
                 <View style={[styles.integrantes]}>
-                    <Image source={require('@/assets/images/william.jpg')} style={[styles.foto]}/>
                     <View>
                         <Text style={[styles.nome]}>William Eduardo Di Martini Minorelli</Text>
                         <Text style={[]}>Programador Junior</Text>
                     </View>
                 </View>
                 <View style={[styles.integrantes]}>
-                    <Image source={require('@/assets/images/lucas.jpg')} style={[styles.foto]}/>
                     <View>
                         <Text style={[styles.nome]}>Lucas Vinicius Lourenço da Silva</Text>
                         <Text style={[]}>Programador Junior</Text>
                     </View>
                 </View>
                 <View style={[styles.integrantes]}>
-                    <Image source={require('@/assets/images/kayan.jpg')} style={[styles.foto]}/>
                     <View>
                         <Text style={[styles.nome]}>Kayan dos Santo Bezerra</Text>
                         <Text style={[]}>Programação do Desingn</Text>
                     </View>
                 </View>
                 <View style={[styles.integrantes]}>
-                    <Image source={require('@/assets/images/murilo.jpg')} style={[styles.foto]}/>
                     <View>
                         <Text style={[styles.nome]}>Murilo Oliveira Cassemiro</Text>
                         <Text style={[]}>Programação do Desingn</Text>
                     </View>
                 </View>
                 <View style={[styles.integrantes]}>
-                    <Image source={require('@/assets/images/julia.jpg')} style={[styles.foto]}/>
                     <View>
                         <Text style={[styles.nome]}>Julia Moura Gonçalves</Text>
                         <Text style={[]}>Estagiária</Text>
@@ -72,7 +67,11 @@ export default function SobreNos(){
 const styles = StyleSheet.create({
     container:{
         flex: 1,
-        margin: 40,
+        backgroundColor: "#F3F3F3",
+        justifyContent: 'flex-start',
+        marginTop: 50,
+        margin: 20,
+        gap: 8,
     },
 
     gap10:{

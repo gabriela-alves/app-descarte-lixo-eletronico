@@ -65,22 +65,7 @@ export default function Index() {
 
       {/* Caixa de Botões Extra */}
       <View style={styles.main}>
-        <TouchableOpacity 
-          style={[styles.botao, styles.sombra]} 
-          activeOpacity={0.7}
-          onPress={() => navigation.navigate('Biomas')}
-        >
-          <Image source={require('@/assets/images/plant.png')} style={[styles.imagem, styles.plant]}/>
-          <Text>Lixo eletrônico e Biomas Brasileiros</Text>
-        </TouchableOpacity>
-        <TouchableOpacity 
-          style={[styles.botao, styles.sombra]} 
-          activeOpacity={0.7}
-          onPress={() => navigation.navigate('Sobre')}
-        >
-          <Image source={require('@/assets/images/info.png')} style={[styles.imagem, styles.info]}/>
-          <Text>Sobre o projeto</Text>
-        </TouchableOpacity>
+        <Text>Texto</Text>
       </View>
 
       {/* Título Pontos de Coleta */}

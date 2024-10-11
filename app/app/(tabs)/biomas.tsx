@@ -40,6 +40,14 @@ export default function Biomas(){
                     <Image source={require('@/assets/images/bioma.png')} style={[styles.imgBioma]}/>
                     <Text style={[styles.subTitulo]}>Mata Atlântica</Text>
                 </TouchableOpacity>
+                <TouchableOpacity style={[styles.bioma, styles.sombra]} activeOpacity={0.7}>
+                    <Image source={require('@/assets/images/bioma.png')} style={[styles.imgBioma]}/>
+                    <Text style={[styles.subTitulo]}>Pampa</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={[styles.bioma, styles.sombra]} activeOpacity={0.7}>
+                    <Image source={require('@/assets/images/bioma.png')} style={[styles.imgBioma]}/>
+                    <Text style={[styles.subTitulo]}>Pantanal</Text>
+                </TouchableOpacity>
             </View>
         </View>
     );
@@ -49,8 +57,11 @@ export default function Biomas(){
 const styles = StyleSheet.create({
     container:{
         flex: 1,
-        margin: 40,
-        gap: 10,
+        backgroundColor: "#F3F3F3",
+        justifyContent: 'flex-start',
+        marginTop: 50,
+        margin: 20,
+        gap: 8
     },
 
     header: {
