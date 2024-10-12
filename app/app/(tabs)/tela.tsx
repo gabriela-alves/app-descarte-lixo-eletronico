@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-import { 
-  View, 
+import {
+  View,
   Text,
   StyleSheet,
   Image,
@@ -17,7 +17,7 @@ export default function Index() {
     Sobre: undefined;
     Biomas: undefined;
   };
-  
+
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const [image, setImage] = useState(null);
 
@@ -38,34 +38,37 @@ export default function Index() {
     });
 
     if (!result.canceled) {
-      setImage(result.assets[0].uri);
+      const imageUri = result.assets[0].uri;
+      setImage(imageUri);
+      alert(`Imagem salva em: ${imageUri}`);
     }
   };
+
   return (
 
-    
+
     <View style={styles.container}>
       {/* Título */}
       <View style={[styles.topo]}>
         <TouchableOpacity activeOpacity={0.5} onPress={() => navigation.navigate('Home')}>
-          <Image source={require('@/assets/images/seta.png')} style={styles.seta}/>
+          <Image source={require('@/assets/images/seta.png')} style={styles.seta} />
         </TouchableOpacity>
         <Text style={[styles.titulo]}>Descarte</Text>
       </View>
 
       {/* Botão de Escaneamento */}
       <View style={styles.btn}>
-          <TouchableOpacity 
-            style={[styles.botao_Scan, styles.sombra]} 
-            activeOpacity={0.7}  
-            onPress={openCamera}
-          >
-            <View style={styles.caixaTitulo}>
-              <Image source={require('@/assets/images/camera.png')} style={styles.imagem_cima}/>
-              <Text style={styles.subTitulo}>Escaneamento de lixo eletrônico</Text>
-            </View>
-            <Text style={styles.estilo}>Você já escaneou 100 itens</Text>
-          </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.botao_Scan, styles.sombra]}
+          activeOpacity={0.7}
+          onPress={openCamera}
+        >
+          <View style={styles.caixaTitulo}>
+            <Image source={require('@/assets/images/camera.png')} style={styles.imagem_cima} />
+            <Text style={styles.subTitulo}>Escaneamento de lixo eletrônico</Text>
+          </View>
+          <Text style={styles.estilo}>Você já escaneou 100 itens</Text>
+        </TouchableOpacity>
       </View>
 
       {/* Caixa de Botões Extra */}
@@ -81,7 +84,7 @@ export default function Index() {
         {/* Example Collection Button */}
         <TouchableOpacity style={[styles.botao_coleta, styles.sombra]} activeOpacity={0.7}>
           <View style={styles.coleta_img_container}>
-            <Image source={require('@/assets/images/localizacao.png')} style={styles.coleta_img}/>
+            <Image source={require('@/assets/images/localizacao.png')} style={styles.coleta_img} />
             <Text style={styles.coleta_text}>Presidente Prudente</Text>
           </View>
           <Text>ETEC Arruda Mello</Text>
@@ -102,19 +105,19 @@ const styles = StyleSheet.create({
     gap: 8
   },
 
-  topo:{
+  topo: {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 10,
     gap: 10,
   },
 
-  seta:{
+  seta: {
     width: 50,
     height: 50,
   },
 
-  btn:{
+  btn: {
     marginBottom: 20,
   },
 
@@ -139,22 +142,22 @@ const styles = StyleSheet.create({
   },
 
   coleta: {
-    flexDirection: 'column', 
+    flexDirection: 'column',
     width: '100%',
   },
 
   main: {
-    flexDirection: 'row', 
+    flexDirection: 'row',
     justifyContent: 'space-between',
     width: '100%',
     marginTop: -10, // Reduced spacing between buttons
   },
-  
+
   message: {
     textAlign: 'center',
     paddingBottom: 10,
   },
-  
+
   titulo: {
     color: 'gray',
     fontWeight: 'bold',
@@ -172,121 +175,121 @@ const styles = StyleSheet.create({
     padding: 15,
     gap: 10,
     marginBottom: -5, // Reduced space below scan button
-   },
-   
-   botao: {
-     backgroundColor: '#FFF',
-     borderColor: '#FFF',
-     borderWidth: 0.5,
-     height: 110,
-     borderRadius: 10,
-     padding: 15,
-     gap:10,
-     width:'48%',
-   },
+  },
 
-   botao_coleta:{
-     backgroundColor:'#FFF',
-     borderColor:'#FFF',
-     borderWidth:.5,
-     borderRadius :10 ,
-     padding :15 ,
-     gap :10 ,
-     width :'100%' ,
-     marginBottom :10 ,
-   },
+  botao: {
+    backgroundColor: '#FFF',
+    borderColor: '#FFF',
+    borderWidth: 0.5,
+    height: 110,
+    borderRadius: 10,
+    padding: 15,
+    gap: 10,
+    width: '48%',
+  },
 
-   caixaTitulo:{
-     flex :1 ,
-     width:'100%',
-     flexDirection:'row',
-     alignItems:'center'
-   },
+  botao_coleta: {
+    backgroundColor: '#FFF',
+    borderColor: '#FFF',
+    borderWidth: .5,
+    borderRadius: 10,
+    padding: 15,
+    gap: 10,
+    width: '100%',
+    marginBottom: 10,
+  },
 
-   subTitulo:{
-     color:'black',
-     fontWeight:'bold',
-     fontSize :20 ,
-     width :180
-   },
+  caixaTitulo: {
+    flex: 1,
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
 
-   imagem_cima:{
-     marginRight :10 ,
-     height :45 ,
-     width :45 ,
-     backgroundColor :'white' ,
-     borderRadius :100 ,
-   },
+  subTitulo: {
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: 20,
+    width: 180
+  },
 
-   imagem:{
-     marginRight :10 ,
-     height :30 ,
-     width :30 ,
-     resizeMode :'contain' ,
-     borderRadius :100 ,
-   },
+  imagem_cima: {
+    marginRight: 10,
+    height: 45,
+    width: 45,
+    backgroundColor: 'white',
+    borderRadius: 100,
+  },
 
-   estilo:{
-     color :'black' ,
-   },
+  imagem: {
+    marginRight: 10,
+    height: 30,
+    width: 30,
+    resizeMode: 'contain',
+    borderRadius: 100,
+  },
 
-   sombra:{
-     shadowColor :'#333333' ,
-     shadowOffset :{
-       width :6 ,
-       height :6 ,
-     },
-     shadowOpacity :0.6 ,
-     shadowRadius :4 ,
-     elevation :10
-   },
+  estilo: {
+    color: 'black',
+  },
 
-   info:{
-     backgroundColor :'#EFA8FF' ,
-   },
+  sombra: {
+    shadowColor: '#333333',
+    shadowOffset: {
+      width: 6,
+      height: 6,
+    },
+    shadowOpacity: 0.6,
+    shadowRadius: 4,
+    elevation: 10
+  },
 
-   plant:{
-     backgroundColor :'#C7FB31' ,
-   },
+  info: {
+    backgroundColor: '#EFA8FF',
+  },
 
-   coleta_img:{
-     width :30 ,
-     height :30 ,
-     resizeMode :'contain' ,
-   },
+  plant: {
+    backgroundColor: '#C7FB31',
+  },
 
-   coleta_img_container:{
-     flexDirection :'row' ,
-     alignItems :'center' ,
-     marginBottom :5 , 
-   },
+  coleta_img: {
+    width: 30,
+    height: 30,
+    resizeMode: 'contain',
+  },
 
-   coleta_text:{
-     fontWeight :'bold' ,
-     marginLeft :10 ,
-   },
-   
-   buttonContainer:{
-       flex :1 ,
-       flexDirection :'row' ,
-       backgroundColor :'transparent' ,
-       margin :64,
-   },
-   
-   button:{
-       flex :1 ,
-       alignSelf :'flex-end' ,
-       alignItems :'center' ,
-   },
-   
-   text:{
-       fontSize :24 ,
-       fontWeight :'bold' ,
-       color :'white' ,
-   },
-   
-   camera:{
-       flex :1 , 
-       width :395
-   }, 
+  coleta_img_container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 5,
+  },
+
+  coleta_text: {
+    fontWeight: 'bold',
+    marginLeft: 10,
+  },
+
+  buttonContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: 'transparent',
+    margin: 64,
+  },
+
+  button: {
+    flex: 1,
+    alignSelf: 'flex-end',
+    alignItems: 'center',
+  },
+
+  text: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: 'white',
+  },
+
+  camera: {
+    flex: 1,
+    width: 395
+  },
 });
