@@ -13,12 +13,19 @@ import { StackNavigationProp } from '@react-navigation/native-stack';
 export default function PontoColeta() {
     const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
-    // State to manage the map's region
+    // State to manage the map's region and selected location
     const [region, setRegion] = useState({
-        latitude: -23.0978, // Initial latitude
-        longitude: -51.3883, // Initial longitude
+        latitude: -22.115024466102977,
+        longitude: -51.41310266221828,
         latitudeDelta: 0.01,
         longitudeDelta: 0.01,
+    });
+
+    const [selectedLocation, setSelectedLocation] = useState({
+        name: '',
+        address: '',
+        neighborhood: '',
+        coordinate: { latitude: -22.115024466102977, longitude: -51.41310266221828 },
     });
 
     const locations = [
@@ -26,28 +33,29 @@ export default function PontoColeta() {
             name: "Sam’s Club",
             address: "Av. Salim Farah Maluf, 17",
             neighborhood: "Jardim das Rosas",
-            coordinate: { latitude: -23.0978, longitude: -51.3883 },
+            coordinate: { latitude: -22.115024466102977, longitude: -51.41310266221828 },
         },
         {
             name: "Magazine Luiza do Prudenshopping",
             address: "Av. Manoel Goulart, 2400",
             neighborhood: "Jardim das Rosas",
-            coordinate: { latitude: -23.0974, longitude: -51.3896 },
+            coordinate: { latitude: -22.11610104880266, longitude: -51.4074458045471 },
         },
         {
             name: "Cooperlix",
             address: "Rua Helena Ferrante Borguinhão, S/N",
             neighborhood: "Distrito Industrial",
-            coordinate: { latitude: -23.0960, longitude: -51.3870 },
+            coordinate: { latitude: -24.019343281813157, longitude: -46.46699119099168 },
         },
     ];
 
-    const handleLocationPress = (coordinate) => {
+    const handleLocationPress = (location) => {
         setRegion({
             ...region,
-            latitude: coordinate.latitude,
-            longitude: coordinate.longitude,
+            latitude: location.coordinate.latitude,
+            longitude: location.coordinate.longitude,
         });
+        setSelectedLocation(location);
     };
 
     return (
@@ -62,7 +70,12 @@ export default function PontoColeta() {
             </View>
             <View style={[styles.locais]}>
                 {locations.map((location, index) => (
-                    <TouchableOpacity activeOpacity={0.5} key={index} style={[styles.local]} onPress={() => handleLocationPress(location.coordinate)}>
+                    <TouchableOpacity 
+                        activeOpacity={0.5} 
+                        key={index} 
+                        style={[styles.local]} 
+                        onPress={() => handleLocationPress(location)}
+                    >
                         <Text style={[styles.negrito, styles.enderecoTxt]}>{location.name}</Text>
                         <Text style={[styles.enderecoTxt]}>{location.address}</Text>
                         <Text style={[styles.enderecoTxt]}>{location.neighborhood}</Text>
@@ -72,13 +85,13 @@ export default function PontoColeta() {
             <View style={[styles.mapa, styles.sombra]}>
                 <MapView 
                     style={styles.map} 
-                    region={region} // Use the dynamic region state here
+                    region={region}
                 >
-                    {/* Marcador para a Etec */}
+                    {/* Marker for the selected location */}
                     <Marker 
-                        coordinate={{ latitude: -23.0978, longitude: -51.3883 }} 
-                        title={"Etec Prof. Adolpho Arruda Mello"} 
-                        description={"Rua Ribeiro de Barros, 1770, Centro"} 
+                        coordinate={selectedLocation.coordinate} 
+                        title={selectedLocation.name} 
+                        description={`${selectedLocation.address}, ${selectedLocation.neighborhood}`} 
                     />
                 </MapView>
             </View>
@@ -92,7 +105,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#F3F3F3",
         justifyContent: 'flex-start',
         marginTop: 50,
-        margin: 20,
+        marginHorizontal: 20,
         gap: 8
     },
     negrito:{
@@ -132,8 +145,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         gap: 10,
     },
-    local:{
-    },
+    local:{},
     enderecoTxt:{
         fontSize: 20,
     },
