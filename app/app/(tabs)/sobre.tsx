@@ -125,6 +125,13 @@ export default function SobreNos(){
                         <Text style={[]}>1° Ano Informática</Text>
                     </View>
                 </View>
+                <View style={[styles.integrantes]}>
+                    <Image source={require('@/assets/images/tayna.jpg')} style={[styles.foto]}/>
+                    <View>
+                        <Text style={[styles.nome]}>Tayná Silva França</Text>
+                        <Text style={[]}>1° Ano Informática</Text>
+                    </View>
+                </View>
             </ScrollView>
         </View>
     );
@@ -142,6 +149,7 @@ const styles = StyleSheet.create({
     },
 
     gap10:{
+        height: 'auto',
         gap: 15,
     },
 

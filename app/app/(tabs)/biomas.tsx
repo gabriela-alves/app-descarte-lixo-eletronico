@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, Animated, StyleSheet } from "react-native";
+import { View, Text, ScrollView, Image, TouchableOpacity, Animated, StyleSheet } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/native-stack';
 
@@ -156,6 +156,17 @@ export default function Biomas() {
         setSelectedBioma(biomas[params]); // Update state with selected bioma details
     }
 
+    const TipoLixo = ({ cor, linha, equipamentos, exemplos }) => (
+        <View style={styles.classificacao}>
+            <Image source={cor} style={styles.lixeira} />
+            <View style={styles.tipoLixoContainer}>
+                <Text style={styles.texto}>{linha}</Text>
+                <Text style={styles.texto}>{equipamentos}</Text>
+                <Text style={styles.texto}>{exemplos}</Text>
+            </View>
+        </View>
+    );
+
     return (
         <View style={[styles.container]}>
             <View style={[styles.topo]}>
@@ -172,7 +183,7 @@ export default function Biomas() {
                         clickAperece2();
                     }}
                 >
-                    <Image source={require('@/assets/images/bioma.png')} style={[styles.imgBioma]} />
+                    <Image source={require('@/assets/images/lixeiraC.png')} style={[styles.imgBioma]} />
                     <Text style={[styles.subTitulo]}>{lixo[0].bioma}</Text>
                 </TouchableOpacity>
             </View>
@@ -197,45 +208,41 @@ export default function Biomas() {
                     <Text style={[styles.colorFechar]}>Fechar</Text>
                 </TouchableOpacity>
                 <Text style={[styles.color]}>{lixo[0].bioma}</Text>
-                <View style={styles.info}>
+                <ScrollView style={[styles.info]}>
                     <Text style={[styles.color]}>{lixo[0].sobre}</Text>
                     <View style={styles.gap}>
                         <Text style={styles.color}>{lixo[0].title}</Text>
                         <Text style={styles.color}>{lixo[0].subTitle}</Text>
-                        <View style={styles.classificacao}>
-                            <Image source={require('@/assets/images/verde.png')} style={[styles.lixeira]}/>
-                            <View>
-                                <Text style={styles.texto}>{lixo[0].classificao.verde.linha}</Text>
-                                <Text style={styles.texto}>{lixo[0].classificao.verde.equipamentos}</Text>
-                                <Text style={styles.texto}>{lixo[0].classificao.verde.exemplos}</Text>
-                            </View>
-                        </View>
-                        <View style={styles.classificacao}>
-                            <Image source={require('@/assets/images/marrom.png')} style={[styles.lixeira]}/>
-                            <View>
-                                <Text style={styles.texto}>{lixo[0].classificao.marrom.linha}</Text>
-                                <Text style={styles.texto}>{lixo[0].classificao.marrom.equipamentos}</Text>
-                                <Text style={styles.texto}>{lixo[0].classificao.marrom.exemplos}</Text>
-                            </View>
-                        </View>
-                        <View style={styles.classificacao}>
-                            <Image source={require('@/assets/images/azul.png')} style={[styles.lixeira]}/>
-                            <View>
-                                <Text style={styles.texto}>{lixo[0].classificao.azul.linha}</Text>
-                                <Text style={styles.texto}>{lixo[0].classificao.azul.equipamentos}</Text>
-                                <Text style={styles.texto}>{lixo[0].classificao.azul.exemplos}</Text>
-                            </View>
-                        </View>
-                        <View style={styles.classificacao}>
-                            <Image source={require('@/assets/images/branco.png')} style={[styles.lixeira]}/>
-                            <View>
-                                <Text style={styles.texto}>{lixo[0].classificao.branca.linha}</Text>
-                                <Text style={styles.texto}>{lixo[0].classificao.branca.equipamentos}</Text>
-                                <Text style={styles.texto}>{lixo[0].classificao.branca.exemplos}</Text>
-                            </View>
-                        </View>
+
+                        <TipoLixo 
+                            cor={require('@/assets/images/verde.png')}
+                            linha={lixo[0].classificao.verde.linha}
+                            equipamentos={lixo[0].classificao.verde.equipamentos}
+                            exemplos={lixo[0].classificao.verde.exemplos}
+                        />
+
+                        <TipoLixo 
+                            cor={require('@/assets/images/marrom.png')}
+                            linha={lixo[0].classificao.marrom.linha}
+                            equipamentos={lixo[0].classificao.marrom.equipamentos}
+                            exemplos={lixo[0].classificao.marrom.exemplos}
+                        />
+
+                        <TipoLixo 
+                            cor={require('@/assets/images/azul.png')}
+                            linha={lixo[0].classificao.azul.linha}
+                            equipamentos={lixo[0].classificao.azul.equipamentos}
+                            exemplos={lixo[0].classificao.azul.exemplos}
+                        />
+
+                        <TipoLixo 
+                            cor={require('@/assets/images/branco.png')}
+                            linha={lixo[0].classificao.branca.linha}
+                            equipamentos={lixo[0].classificao.branca.equipamentos}
+                            exemplos={lixo[0].classificao.branca.exemplos}
+                        />
                     </View>
-                </View>
+                </ScrollView>
             </Animated.View>
             <Animated.View style={[styles.caixaInfo, styles.sombra, { bottom: bottomValue }]}>
                 <TouchableOpacity style={[styles.fechar]} onPress={clickDesaperece}>
@@ -260,7 +267,17 @@ export default function Biomas() {
 }
 
 const styles = StyleSheet.create({
-    gap:{ gap: 10},
+    info: {
+        flex: 1,
+        padding: 20,
+        maxHeight: "100%",
+    },
+    gap: {
+        marginVertical: 10,
+    },
+    texto: {
+        color: '#333',
+    },
 
     container:{
         flex: 1,
@@ -341,7 +358,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#023047',
         position: 'absolute',
         width: '100%',
-        height: 'auto',
+        maxHeight: "60%",
         padding: 10,
         borderTopLeftRadius: 10,
         borderTopRightRadius: 10,
@@ -356,26 +373,25 @@ const styles = StyleSheet.create({
         padding: 2,
     },
 
-    info:{
-        width: '100%',
-        gap: 10,
-    },
-    texto: {
-        color: '#ffffff',
-        maxWidth: '90%',
-        lineHeight: 24,
-    },
-
-    classificacao:{
-        width: "100%",
+    classificacao: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center',
+        marginBottom: 10,
     },
-    lixeira:{
-        margin: 10,
-        width: 60,
-        height: 60,
+    lixeira: {
+        width: 50,
+        height: 50,
+        marginRight: 10,
+    },
+    tipoLixoContainer: {
+        flex: 1,
+        backgroundColor: '#fff',
+        borderRadius: 10,
+        padding: 10,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.2,
+        shadowRadius: 1,
     },
 
     sombra:{
