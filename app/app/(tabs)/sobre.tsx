@@ -3,6 +3,7 @@ import {
     Text,
     Image,
     TouchableOpacity,
+    ScrollView,
     StyleSheet,
 } from "react-native";
 import { useNavigation } from '@react-navigation/native';
@@ -25,7 +26,7 @@ export default function SobreNos(){
                 técnico Informática para Internet da ETEC Prof.º Adolpho Arruda Mello, sob orientação das professoras Gabriela Alves do Nascimento 
                 Silva e Thamires Caetano de Amorin.
             </Text>
-            <View style={[styles.gap10]}>
+            <ScrollView style={[styles.gap10]}>
                 <View style={[styles.integrantes]}>
                     <Image source={require('@/assets/images/gabi.jpg')} style={[styles.foto]}/>
                     <View>
@@ -41,9 +42,23 @@ export default function SobreNos(){
                     </View>
                 </View>
                 <View style={[styles.integrantes]}>
+                    <Image source={require('@/assets/images/amanda.jpg')} style={[styles.foto]}/>
+                    <View>
+                        <Text style={[styles.nome]}>Amanda Carvalho Dionisio</Text>
+                        <Text style={[]}>3° Ano Informática</Text>
+                    </View>
+                </View>
+                <View style={[styles.integrantes]}>
                     <Image source={require('@/assets/images/carlos.jpg')} style={[styles.foto]}/>
                     <View>
                         <Text style={[styles.nome]}>Carlos Daniel Verdeiro</Text>
+                        <Text style={[]}>3° Ano Informática</Text>
+                    </View>
+                </View>
+                <View style={[styles.integrantes]}>
+                    <Image source={require('@/assets/images/jovana.jpg')} style={[styles.foto]}/>
+                    <View>
+                        <Text style={[styles.nome]}>Jovana Carvalho Dionisio</Text>
                         <Text style={[]}>3° Ano Informática</Text>
                     </View>
                 </View>
@@ -83,13 +98,34 @@ export default function SobreNos(){
                     </View>
                 </View>
                 <View style={[styles.integrantes]}>
+                    <Image source={require('@/assets/images/gustavo.jpg')} style={[styles.foto]}/>
+                    <View>
+                        <Text style={[styles.nome]}>Gustavo Moreira Camilo</Text>
+                        <Text style={[]}>1° Ano Informática</Text>
+                    </View>
+                </View>
+                <View style={[styles.integrantes]}>
                     <Image source={require('@/assets/images/julia.jpg')} style={[styles.foto]}/>
                     <View>
                         <Text style={[styles.nome]}>Julia Moura Gonçalves</Text>
                         <Text style={[]}>1° Ano Informática</Text>
                     </View>
                 </View>
-            </View>
+                <View style={[styles.integrantes]}>
+                    <Image source={require('@/assets/images/julio.jpg')} style={[styles.foto]}/>
+                    <View>
+                        <Text style={[styles.nome]}>Julio Arcanjo Sanvezzo Gomes</Text>
+                        <Text style={[]}>1° Ano Informática</Text>
+                    </View>
+                </View>
+                <View style={[styles.integrantes]}>
+                    <Image source={require('@/assets/images/lucasM.jpg')} style={[styles.foto]}/>
+                    <View>
+                        <Text style={[styles.nome]}>Lucas Magalhães</Text>
+                        <Text style={[]}>1° Ano Informática</Text>
+                    </View>
+                </View>
+            </ScrollView>
         </View>
     );
 }
