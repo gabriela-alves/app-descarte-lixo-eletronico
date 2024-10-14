@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import {
   View,
@@ -8,12 +8,42 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/native-stack';
 import * as ImagePicker from 'expo-image-picker';
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Home() {
+  const [itens, setItens] = useState(0);
+  
+  const loadItems = async () => {
+    try {
+      const storedValue = await AsyncStorage.getItem('itens');
+      if (storedValue !== null) {
+        setItens(parseInt(storedValue));
+      }
+    } catch (error) {
+      console.error("Erro ao carregar os itens: ", error);
+    }
+  };
+
+  const incrementItems = async () => {
+    const newValue = itens + 1;
+    setItens(newValue);
+    try {
+      await AsyncStorage.setItem('itens', newValue.toString());
+    } catch (error) {
+      console.error("Erro ao salvar os itens: ", error);
+    }
+  };
+
+  useFocusEffect(
+    React.useCallback(() => {
+      loadItems();
+    }, [])
+  );
+
   type RootStackParamList = {
     Sobre: undefined;
   };
@@ -40,6 +70,11 @@ export default function Home() {
     }
   };
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();;
+  
+  const handleButtonPress = () => {
+    incrementItems();
+    openCamera();
+  };
   return (
     <ScrollView style={[styles.container]} scrollEnabled={false} nestedScrollEnabled={false}>
       <View>
@@ -47,7 +82,7 @@ export default function Home() {
           <Image style={[styles.logo]} source={require('@/assets/images/logo.png')} />
         </View>
         <View style={[styles.buttons, styles.gap20, styles.top20]}>
-          <TouchableOpacity style={[styles.button, styles.azulC]} activeOpacity={0.7} onPress={openCamera}>
+          <TouchableOpacity style={[styles.button, styles.azulC]} activeOpacity={0.7} onPress={handleButtonPress}>
             <Image style={[styles.imagem]} source={require('@/assets/images/cameraS.png')} />
             <Text style={[styles.subTitulo]}>Identifique o seu lixo</Text>
           </TouchableOpacity>

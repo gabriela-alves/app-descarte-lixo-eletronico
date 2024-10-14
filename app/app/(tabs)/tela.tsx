@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import {
+import{
   View,
   Text,
   StyleSheet,
@@ -8,15 +8,44 @@ import {
   TouchableOpacity,
   ScrollView
 } from "react-native";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/native-stack';
 import * as ImagePicker from 'expo-image-picker';
 import * as ImageManipulator from 'expo-image-manipulator';
 
 import { api } from '../../assets/services/api';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Index() {
+  const [itens, setItens] = useState(0);
+  
+  const loadItems = async () => {
+    try {
+      const storedValue = await AsyncStorage.getItem('itens');
+      if (storedValue !== null) {
+        setItens(parseInt(storedValue));
+      }
+    } catch (error) {
+      console.error("Erro ao carregar os itens: ", error);
+    }
+  };
+
+  const incrementItems = async () => {
+    const newValue = itens + 1;
+    setItens(newValue);
+    try {
+      await AsyncStorage.setItem('itens', newValue.toString());
+    } catch (error) {
+      console.error("Erro ao salvar os itens: ", error);
+    }
+  };
+
+  useFocusEffect(
+    React.useCallback(() => {
+      loadItems();
+    }, [])
+  );
+
   type RootStackParamList = {
     Sobre: undefined;
     Biomas: undefined;
@@ -97,7 +126,10 @@ export default function Index() {
     }
   }
 
-
+  const handleButtonPress = () => {
+    incrementItems();
+    openCamera();
+  };
   return (
 
 
@@ -115,13 +147,13 @@ export default function Index() {
         <TouchableOpacity
           style={[styles.botao_Scan, styles.sombra]}
           activeOpacity={0.7}
-          onPress={openCamera}
+          onPress={handleButtonPress}
         >
           <View style={styles.caixaTitulo}>
             <Image source={require('@/assets/images/camera.png')} style={styles.imagem_cima} />
             <Text style={styles.subTitulo}>Escaneamento de lixo eletrônico</Text>
           </View>
-          <Text style={styles.estilo}>Você já escaneou 100 itens</Text>
+          <Text style={styles.estilo}>Você já escaneou {itens} itens</Text>
         </TouchableOpacity>
       </View>
 
