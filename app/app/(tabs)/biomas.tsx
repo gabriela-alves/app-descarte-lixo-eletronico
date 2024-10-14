@@ -158,11 +158,11 @@ export default function Biomas() {
 
     const TipoLixo = ({ cor, linha, equipamentos, exemplos }) => (
         <View style={styles.classificacao}>
-            <Image source={cor} style={styles.lixeira} />
+            <Image source={cor} style={[styles.lixeira]} />
             <View style={styles.tipoLixoContainer}>
-                <Text style={styles.texto}>{linha}</Text>
-                <Text style={styles.texto}>{equipamentos}</Text>
-                <Text style={styles.texto}>{exemplos}</Text>
+                <Text style={[styles.texto, styles.just, {fontWeight: 'bold'}]}>{linha}</Text>
+                <Text style={[styles.texto, styles.just]}>{equipamentos}</Text>
+                <Text style={[styles.texto, styles.just]}>{exemplos}</Text>
             </View>
         </View>
     );
@@ -207,12 +207,11 @@ export default function Biomas() {
                 <TouchableOpacity style={[styles.fechar]} onPress={clickDesaperece2}>
                     <Text style={[styles.colorFechar]}>Fechar</Text>
                 </TouchableOpacity>
-                <Text style={[styles.color]}>{lixo[0].bioma}</Text>
                 <ScrollView style={[styles.info]}>
-                    <Text style={[styles.color]}>{lixo[0].sobre}</Text>
+                    <Text style={[styles.color, styles.just]}>{lixo[0].sobre}</Text>
                     <View style={styles.gap}>
-                        <Text style={styles.color}>{lixo[0].title}</Text>
-                        <Text style={styles.color}>{lixo[0].subTitle}</Text>
+                        <Text style={[styles.color, {fontWeight: 'bold'}]}>{lixo[0].title}</Text>
+                        <Text style={[styles.color, styles.just, {marginBottom: 10}]}>{lixo[0].subTitle}</Text>
 
                         <TipoLixo 
                             cor={require('@/assets/images/verde.png')}
@@ -249,8 +248,8 @@ export default function Biomas() {
                     <Text style={[styles.colorFechar]}>Fechar</Text>
                 </TouchableOpacity>
                 <Text style={[styles.color]}>{selectedBioma.bioma}</Text>
-                <View>
-                    <Text style={[styles.color]}>{selectedBioma.sobre}</Text>
+                <ScrollView>
+                    <Text style={[styles.color, {marginBottom: 10}]}>{selectedBioma.sobre}</Text>
                     <View>
                         <Text style={[styles.color, styles.negrito]}>Características:</Text>
                         <Text style={[styles.color]}><Text style={[styles.negrito]}>Fauna:</Text> {selectedBioma.fauna}</Text>
@@ -260,7 +259,7 @@ export default function Biomas() {
                         <Text style={[styles.color]}><Text style={[styles.negrito]}>Vegetação:</Text> {selectedBioma.vegetacao}</Text>
                         <Text style={[styles.color]}><Text style={[styles.negrito]}>Solo:</Text> {selectedBioma.solo}</Text>
                     </View>
-                </View>
+                </ScrollView>
             </Animated.View>
         </View>
     );
@@ -277,6 +276,9 @@ const styles = StyleSheet.create({
     },
     texto: {
         color: '#333',
+    },
+    just:{
+        textAlign: 'justify'
     },
 
     container:{
@@ -304,7 +306,7 @@ const styles = StyleSheet.create({
         color: 'black',
     },
     color:{
-        color: '#ffffff',
+        color: '#212529',
     },
 
     titulo:{
@@ -355,13 +357,17 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         alignItems: 'center',
-        backgroundColor: '#023047',
+        backgroundColor: '#BCE954',
         position: 'absolute',
         width: '100%',
         maxHeight: "60%",
         padding: 10,
         borderTopLeftRadius: 10,
         borderTopRightRadius: 10,
+        borderColor: "#1C2E4A",
+        borderTopWidth: 8,
+        borderRightWidth: 8,
+        borderLeftWidth: 8,
         gap: 10,
     },
     fechar:{
@@ -376,7 +382,11 @@ const styles = StyleSheet.create({
     classificacao: {
         flexDirection: 'row',
         alignItems: 'center',
+        justifyContent: "center",
         marginBottom: 10,
+        backgroundColor: "#ced4da",
+        borderRadius: 10,
+        paddingLeft: 10,
     },
     lixeira: {
         width: 50,
