@@ -135,7 +135,7 @@ export default function Index() {
 
       {/* Botões de Pontos de Coleta */}
       <ScrollView>
-        <View style={[styles.coleta,{backgroundColor:'#fff'}]}>
+        <View style={[styles.coleta,{backgroundColor: '#fff'}]}>
           {/* Example Collection Button */}
           {locations.map((location, index) => (
             <TouchableOpacity
@@ -300,8 +300,8 @@ const styles = StyleSheet.create({
   sombra: {
     shadowColor: '#333333',
     shadowOffset: {
-      width: 6,
-      height: 6,
+      width: 3,
+      height: 3,
     },
     shadowOpacity: 0.6,
     shadowRadius: 4,
