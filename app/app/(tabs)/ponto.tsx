@@ -73,7 +73,7 @@ export default function PontoColeta() {
                     <TouchableOpacity 
                         activeOpacity={0.5} 
                         key={index} 
-                        style={[styles.local]} 
+                        style={[styles.local, styles.sombra]} 
                         onPress={() => handleLocationPress(location)}
                     >
                         <Text style={[styles.negrito, styles.enderecoTxt]}>{location.name}</Text>
@@ -145,7 +145,11 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         gap: 10,
     },
-    local:{},
+    local:{
+        backgroundColor: "#e9ecef",
+        padding: 10,
+        borderRadius: 10,
+    },
     enderecoTxt:{
         fontSize: 20,
     },
