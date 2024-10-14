@@ -14,6 +14,8 @@ import * as ImagePicker from 'expo-image-picker';
 
 
 export default function Home() {
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();;
+
   type RootStackParamList = {
     Sobre: undefined;
   };
@@ -37,9 +39,10 @@ export default function Home() {
 
     if (!result.canceled) {
       setImage(result.assets[0].uri);
+      navigation.navigate('Lixo', { imgUrlInicial: result.assets[0].uri }); // Defina o parâmetro aqui
+
     }
   };
-  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();;
   return (
     <ScrollView style={[styles.container]} scrollEnabled={false} nestedScrollEnabled={false}>
       <View>

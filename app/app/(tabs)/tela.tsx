@@ -12,7 +12,7 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/native-stack';
 import * as ImagePicker from 'expo-image-picker';
 import * as ImageManipulator from 'expo-image-manipulator';
-
+import { useRoute } from '@react-navigation/native';
 import { api } from '../../assets/services/api';
 
 
@@ -23,20 +23,46 @@ export default function Index() {
   };
 
   const locations = require('../../assets/pontos.json');
+  const explicacoes = require('../../assets/explicacao.json');
 
 
-  const [selectedLocation, setSelectedLocation] = useState({
-    name: '',
-    address: '',
-    neighborhood: '',
-    coordinate: { latitude: -22.115024466102977, longitude: -51.41310266221828 },
-  });
 
 
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const [image, setImage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [resposta, setResposta] = useState<string | null>(null);
+  const route = useRoute();
+
+  const { imgUrlInicial } = route.params; // Aqui você acessa o parâmetro
+
+  const isImageSent = !!imgUrlInicial;
+
+  if (isImageSent) {
+    const processImage = async () => {
+      // Usando async/await
+      const imgManipuled = await ImageManipulator.manipulateAsync(
+        imgUrlInicial,
+        [{ resize: { width: 180, height: 180 } }],
+        {
+          compress: 1,
+          format: ImageManipulator.SaveFormat.JPEG,
+          base64: true,
+        }
+      );
+
+      setImage(imgManipuled.uri);
+      sendAPI(imgManipuled.base64);
+    };
+
+    // Chama a função assíncrona
+    processImage().catch(error => {
+      console.error("Erro ao manipular a imagem:", error);
+    });
+  }
+
+
+
   const openCamera = async () => {
     // Solicita permissões da câmera
     const permissionResult = await ImagePicker.requestCameraPermissionsAsync();
@@ -127,17 +153,33 @@ export default function Index() {
 
       {/* Caixa de Botões Extra */}
       <View style={styles.main}>
-        <Text>Item identificado: {resposta}</Text>
+        {resposta ? (
+          <Text style={styles.explicacao}>Item identificado: {resposta}</Text>
+        ) : (
+          <Text>Nenhum item fotografado.</Text>
+        )}
+      </View>
+
+
+      {/* Caixa explicacao */}
+      <View style={styles.main}>
+        {resposta && explicacoes[resposta] ? (
+          <Text style={styles.explicacaoItem}>{explicacoes[resposta].explicacaoItem}</Text>
+        ) : (
+          ''
+        )}
       </View>
 
       {/* Título Pontos de Coleta */}
-      <Text style={styles.titulo}>Pontos de Coleta para {resposta}</Text>
+      {resposta && (
+        <Text style={styles.titulo}>Pontos de descarte para {resposta}</Text>
+      )}
 
       {/* Botões de Pontos de Coleta */}
       <ScrollView>
-        <View style={[styles.coleta,{backgroundColor: '#fff'}]}>
+        <View style={[styles.coleta, { backgroundColor: '#fff' }]}>
           {/* Example Collection Button */}
-          {locations.map((location, index) => (
+          {resposta != null && locations.map((location, index) => (
             <TouchableOpacity
               activeOpacity={0.5}
               key={index}
@@ -148,9 +190,9 @@ export default function Index() {
               <Text style={[styles.enderecoTxt]}>{location.neighborhood}</Text>
             </TouchableOpacity>
           ))}
-
         </View>
       </ScrollView>
+
     </View>
   );
 }
@@ -276,7 +318,19 @@ const styles = StyleSheet.create({
     fontSize: 20,
     width: 180
   },
-
+  explicacao: {
+    color: 'black',
+    fontSize: 20,
+    textAlign: 'center',
+    width: '100%',
+    marginBottom: 10
+  },
+  explicacaoItem: {
+    color: 'black',
+    fontSize: 16,
+    textAlign: 'justify',
+    width: '100%'
+  },
   imagem_cima: {
     marginRight: 10,
     height: 45,
