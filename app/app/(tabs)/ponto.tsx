@@ -50,7 +50,7 @@ export default function PontoColeta() {
                     <Text style={styles.titulo}>Pontos de Descarte</Text>
                 </View>
             </View>
-            <ScrollView>
+            <ScrollView style={{backgroundColor: "#fff"}}>
                 <View style={[styles.locais]}>
                     {locations.map((location, index) => (
                         <TouchableOpacity 
