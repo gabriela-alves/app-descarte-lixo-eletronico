@@ -47,6 +47,7 @@ Instale as dependências do projeto.
 ```bash
 pip install tensorflow
 pip install keras
+pip install Pillow
 ```
 
 ### 3. Pré-processar Imagens
@@ -60,6 +61,3 @@ Execute o script para treinar o modelo. Certifique-se de que o TensorFlow esteja
 ```bash
 python treino.py
 ```
-
-
-pip install Pillow

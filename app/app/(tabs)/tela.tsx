@@ -6,10 +6,14 @@ import {
   StyleSheet,
   Image,
   TouchableOpacity,
+  LogBox,
 } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/native-stack';
 import * as ImagePicker from 'expo-image-picker';
+import * as ImageManipulator from 'expo-image-manipulator';
+
+import { api } from '../../assets/services/api';
 
 
 export default function Index() {
@@ -19,30 +23,69 @@ export default function Index() {
   };
 
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
-  const [image, setImage] = useState(null);
-
+  const [image, setImage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [resposta, setResposta] = useState<string | null>(null);
   const openCamera = async () => {
     // Solicita permissões da câmera
     const permissionResult = await ImagePicker.requestCameraPermissionsAsync();
 
     if (permissionResult.granted === false) {
       alert('Você precisa conceder permissão para usar a câmera!');
+
+      setIsLoading(true);
       return;
     }
 
     const result = await ImagePicker.launchCameraAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsEditing: true,
-      aspect: [4, 3],
+      allowsEditing: false,
       quality: 1,
     });
 
     if (!result.canceled) {
-      const imageUri = result.assets[0].uri;
-      setImage(imageUri);
-      alert(`Imagem salva em: ${imageUri}`);
+      const imgManipuled = await ImageManipulator.manipulateAsync(
+        result.assets[0].uri,
+        [{ resize: { width: 180, height: 180 } }],
+        {
+          compress: 1,
+          format: ImageManipulator.SaveFormat.JPEG,
+          base64: true
+        }
+      );
+      setImage(imgManipuled.uri);
+      sendAPI(imgManipuled.base64);
+      //setImage(imageUri);
+      //alert(`Imagem salva em: ${imgManipuled.uri}`);
+    } else {
+      setIsLoading(false);
     }
   };
+
+  async function sendAPI(imageBase64: string | undefined) {
+    setIsLoading(true); // Ativa o carregamento
+    try {
+      const response = await api.post('/classificar', {
+        inputs: [
+          {
+            data: {
+              image: {
+                base64: imageBase64,
+              },
+            },
+          },
+        ],
+      });
+
+      setResposta(response.data.classe);
+
+    } catch (error) {
+      console.error('Erro ao enviar a imagem:', error);
+    } finally {
+      setIsLoading(false); // Desativa o carregamento
+    }
+  }
+
 
   return (
 
@@ -73,11 +116,11 @@ export default function Index() {
 
       {/* Caixa de Botões Extra */}
       <View style={styles.main}>
-        <Text>Texto</Text>
+        <Text>Item identificado: {resposta}</Text>
       </View>
 
       {/* Título Pontos de Coleta */}
-      <Text style={styles.titulo}>Pontos de Coleta</Text>
+      <Text style={styles.titulo}>Pontos de Coleta para {resposta}</Text>
 
       {/* Botões de Pontos de Coleta */}
       <View style={styles.coleta}>
