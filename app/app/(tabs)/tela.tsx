@@ -79,7 +79,7 @@ export default function Index() {
           base64: true,
         }
       );
-
+      navigation.setParams({ imgUrlInicial: '' });
       setImage(imgManipuled.uri);
       sendAPI(imgManipuled.base64);
     };
