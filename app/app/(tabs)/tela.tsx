@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import{
   View,
@@ -143,6 +143,7 @@ export default function Index() {
         ],
       });
 
+      incrementItems();
       setResposta(response.data.classe);
 
     } catch (error) {
@@ -152,10 +153,6 @@ export default function Index() {
     }
   }
 
-  const handleButtonPress = () => {
-    incrementItems();
-    openCamera();
-  };
   return (
 
 
@@ -173,7 +170,7 @@ export default function Index() {
         <TouchableOpacity
           style={[styles.botao_Scan, styles.sombra]}
           activeOpacity={0.7}
-          onPress={handleButtonPress}
+          onPress={openCamera}
         >
           <View style={styles.caixaTitulo}>
             <Image source={require('@/assets/images/camera.png')} style={styles.imagem_cima} />
