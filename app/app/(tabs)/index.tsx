@@ -67,6 +67,8 @@ export default function Home() {
 
     if (!result.canceled) {
       setImage(result.assets[0].uri);
+      navigation.navigate('Lixo', { imgUrlInicial: result.assets[0].uri }); // Defina o parâmetro aqui
+
     }
   };
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();;
