@@ -135,7 +135,7 @@ export default function Index() {
 
       {/* Botões de Pontos de Coleta */}
       <ScrollView>
-        <View style={styles.coleta}>
+        <View style={[styles.coleta,{backgroundColor:'#fff'}]}>
           {/* Example Collection Button */}
           {locations.map((location, index) => (
             <TouchableOpacity
