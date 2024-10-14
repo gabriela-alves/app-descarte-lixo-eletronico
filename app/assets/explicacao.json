@@ -1,0 +1,11 @@
+{
+    "celular":{
+        "explicacao": "Os celulares são um dos maiores contribuintes para o lixo eletrônico devido à rápida obsolescência tecnológica. Eles contêm metais preciosos como ouro e cobre, além de materiais tóxicos que podem causar poluição23. O descarte inadequado pode resultar em sérios problemas ambientais."
+    },
+    "pilha":{
+        "explicacao": "As pilhas são uma fonte significativa de poluição quando não descartadas corretamente. Elas contêm metais pesados e substâncias químicas tóxicas, como mercúrio e cádmio, que podem contaminar o solo e os lençóis freáticos se forem jogadas no lixo comum23. O descarte adequado é essencial para evitar a liberação desses materiais nocivos no meio ambiente."
+    },
+    "teclado":{
+        "explicacao": "Os teclados, especialmente os de computadores e notebooks, são frequentemente descartados quando quebrados ou obsoletos. Eles contêm plásticos e metais que podem ser reciclados, mas também possuem substâncias que podem ser prejudiciais ao meio ambiente se não forem tratados adequadamente12."
+    }
+}
