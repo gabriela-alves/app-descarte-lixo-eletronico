@@ -5,6 +5,7 @@ import {
     Image,
     StyleSheet,
     TouchableOpacity,
+    ScrollView,
 } from "react-native";
 import MapView, { Marker } from 'react-native-maps';
 import { useNavigation } from '@react-navigation/native';
@@ -49,20 +50,22 @@ export default function PontoColeta() {
                     <Text style={styles.titulo}>Pontos de Descarte</Text>
                 </View>
             </View>
-            <View style={[styles.locais]}>
-                {locations.map((location, index) => (
-                    <TouchableOpacity 
-                        activeOpacity={0.5} 
-                        key={index} 
-                        style={[styles.local, styles.sombra]} 
-                        onPress={() => handleLocationPress(location)}
-                    >
-                        <Text style={[styles.negrito, styles.enderecoTxt]}>{location.name}</Text>
-                        <Text style={[styles.enderecoTxt]}>{location.address}</Text>
-                        <Text style={[styles.enderecoTxt]}>{location.neighborhood}</Text>
-                    </TouchableOpacity>
-                ))}
-            </View>
+            <ScrollView>
+                <View style={[styles.locais]}>
+                    {locations.map((location, index) => (
+                        <TouchableOpacity 
+                            activeOpacity={0.5} 
+                            key={index} 
+                            style={[styles.local, styles.sombra]} 
+                            onPress={() => handleLocationPress(location)}
+                        >
+                            <Text style={[styles.negrito, styles.enderecoTxt]}>{location.name}</Text>
+                            <Text style={[styles.enderecoTxt]}>{location.address}</Text>
+                            <Text style={[styles.enderecoTxt]}>{location.neighborhood}</Text>
+                        </TouchableOpacity>
+                    ))}
+                </View>
+            </ScrollView>
             <View style={[styles.mapa, styles.sombra]}>
                 <MapView 
                     style={styles.map} 
@@ -87,7 +90,8 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         marginTop: 50,
         marginHorizontal: 20,
-        gap: 8
+        marginBottom: 20,
+        gap: 8,
     },
     negrito:{
         fontWeight: 'bold',
