@@ -22,14 +22,14 @@ export default function PontoColeta() {
         longitudeDelta: 0.01,
     });
 
+    const locations = require('../../assets/pontos.json');
+
     const [selectedLocation, setSelectedLocation] = useState({
         name: '',
         address: '',
         neighborhood: '',
         coordinate: { latitude: -22.115024466102977, longitude: -51.41310266221828 },
     });
-
-    const locations = require('../../assets/pontos.json');
 
     const handleLocationPress = (location) => {
         setRegion({

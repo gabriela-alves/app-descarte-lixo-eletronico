@@ -6,7 +6,7 @@ import {
   StyleSheet,
   Image,
   TouchableOpacity,
-  LogBox,
+  ScrollView
 } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/native-stack';
@@ -21,6 +21,17 @@ export default function Index() {
     Sobre: undefined;
     Biomas: undefined;
   };
+
+  const locations = require('../../assets/pontos.json');
+
+
+  const [selectedLocation, setSelectedLocation] = useState({
+    name: '',
+    address: '',
+    neighborhood: '',
+    coordinate: { latitude: -22.115024466102977, longitude: -51.41310266221828 },
+  });
+
 
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const [image, setImage] = useState('');
@@ -123,17 +134,23 @@ export default function Index() {
       <Text style={styles.titulo}>Pontos de Coleta para {resposta}</Text>
 
       {/* Botões de Pontos de Coleta */}
-      <View style={styles.coleta}>
-        {/* Example Collection Button */}
-        <TouchableOpacity style={[styles.botao_coleta, styles.sombra]} activeOpacity={0.7}>
-          <View style={styles.coleta_img_container}>
-            <Image source={require('@/assets/images/localizacao.png')} style={styles.coleta_img} />
-            <Text style={styles.coleta_text}>Presidente Prudente</Text>
-          </View>
-          <Text>ETEC Arruda Mello</Text>
-          <Text>Rua Ribeiro de Barros, 1770, Centro</Text>
-        </TouchableOpacity>
-      </View>
+      <ScrollView>
+        <View style={styles.coleta}>
+          {/* Example Collection Button */}
+          {locations.map((location, index) => (
+            <TouchableOpacity
+              activeOpacity={0.5}
+              key={index}
+              style={[styles.botao_coleta, styles.sombra]}
+            >
+              <Text style={[styles.negrito, styles.enderecoTxt]}>{location.name}</Text>
+              <Text style={[styles.enderecoTxt]}>{location.address}</Text>
+              <Text style={[styles.enderecoTxt]}>{location.neighborhood}</Text>
+            </TouchableOpacity>
+          ))}
+
+        </View>
+      </ScrollView>
     </View>
   );
 }
@@ -163,14 +180,18 @@ const styles = StyleSheet.create({
   btn: {
     marginBottom: 20,
   },
-
+  negrito: {
+    fontWeight: 'bold',
+  },
   cameraContainer: {
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'center',
     marginTop: -50
   },
-
+  enderecoTxt: {
+    fontSize: 20,
+  },
   closeButton: {
     backgroundColor: '#FF6347',
     borderRadius: 5,
