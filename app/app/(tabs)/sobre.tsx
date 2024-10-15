@@ -79,7 +79,7 @@ export default function SobreNos(){
                 <View style={[styles.integrantes, {marginBottom: 10}]}>
                     <Image source={require('@/assets/images/lucas.jpg')} style={[styles.foto]}/>
                     <View>
-                        <Text style={[styles.nome]}>Lucas Vinicius Lourenço da Silva</Text>
+                        <Text style={[styles.nome, {marginBottom: 10}]}>Lucas Vinicius Lourenço da Silva</Text>
                         <Text style={[]}>2° Ano Informática</Text>
                     </View>
                 </View>

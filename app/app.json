@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Tech Recicle",
-    "slug": "tech_recicle",
+    "name": "ibc",
+    "slug": "ibc",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -22,12 +22,7 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      },
-      "permissions": [
-        "android.permission.CAMERA",
-        "android.permission.RECORD_AUDIO"
-      ],
-      "package": "com.carlosdv1.tech_recicle"
+      }
     },
     "web": {
       "bundler": "metro",
@@ -36,11 +31,6 @@
     },
     "experiments": {
       "typedRoutes": true
-    },
-    "extra": {
-      "eas": {
-        "projectId": "b00f8534-51b0-47bc-a4dd-7f3fc76f1cb3"
-      }
     }
   }
 }
