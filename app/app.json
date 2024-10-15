@@ -14,8 +14,7 @@
     },
     "permissions": [
         "LOCATION"
-<<<<<<< HEAD
-=======
+
     ],
     "plugins": [
       [
@@ -26,7 +25,6 @@
           "recordAudioAndroid": true
         }
       ]
->>>>>>> parent of c535a0a (.)
     ],
     "ios": {
       "supportsTablet": true
