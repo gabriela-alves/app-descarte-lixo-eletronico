@@ -119,6 +119,13 @@ export default function SobreNos(){
                     </View>
                 </View>
                 <View style={[styles.integrantes, {marginBottom: 10}]}>
+                    <Image source={require('@/assets/images/leandro.jpg')} style={[styles.foto]}/>
+                    <View>
+                        <Text style={[styles.nome]}>Leandro Martins Antunes da Cruz</Text>
+                        <Text style={[]}>1° Ano Informática</Text>
+                    </View>
+                </View>
+                <View style={[styles.integrantes, {marginBottom: 10}]}>
                     <Image source={require('@/assets/images/lucasM.jpg')} style={[styles.foto]}/>
                     <View>
                         <Text style={[styles.nome]}>Lucas Magalhães</Text>
