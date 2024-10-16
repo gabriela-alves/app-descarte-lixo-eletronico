@@ -4,6 +4,7 @@ import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
+import LoadingScreen from './LoadingScreen';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
 
@@ -23,7 +24,7 @@ export default function RootLayout() {
   }, [loaded]);
 
   if (!loaded) {
-    return null;
+    return <LoadingScreen/>;
   }
 
   return (
