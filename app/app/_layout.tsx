@@ -6,7 +6,6 @@ import { useEffect } from 'react';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
-import LoadingScreen from './LoadingScreen';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -23,7 +22,7 @@ export default function RootLayout() {
   }, [loaded]);
 
   if (!loaded) {
-    return <LoadingScreen/>;
+    return null;
   }
 
   return (
