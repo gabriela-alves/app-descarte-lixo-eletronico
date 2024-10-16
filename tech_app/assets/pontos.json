@@ -1,0 +1,29 @@
+[
+    {
+        "name": "Sam’s Club",
+        "address": "Av. Salim Farah Maluf, 17",
+        "neighborhood": "Jardim das Rosas",
+        "coordinate": {
+            "latitude": -22.115024466102977,
+            "longitude": -51.41310266221828
+        }
+    },
+    {
+        "name": "Magazine Luiza do Prudenshopping",
+        "address": "Av. Manoel Goulart, 2400",
+        "neighborhood": "Jardim das Rosas",
+        "coordinate": {
+            "latitude": -22.11610104880266,
+            "longitude": -51.4074458045471
+        }
+    },
+    {
+        "name": "Cooperlix",
+        "address": "Rua Helena Ferrante Borguinhão, S/N",
+        "neighborhood": "Distrito Industrial",
+        "coordinate": {
+            "latitude": -22.158967228507418,
+            "longitude": -51.371823621400836
+        }
+    }
+]
