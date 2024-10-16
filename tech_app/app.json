@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "tech_app",
+    "name": "Tech Recicle",
     "slug": "tech_app",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -22,7 +22,8 @@
       },
       "permissions": [
         "ACCESS_FINE_LOCATION",
-        "ACCESS_COARSE_LOCATION"
+        "ACCESS_COARSE_LOCATION",
+        "WRITE_EXTERNAL_STORAGE"
       ],
       "package": "com.carlosdv1.tech_app",
       "config": {
