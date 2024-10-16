@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Cria uma instância do Axios para a API
 export const api = axios.create({
-    baseURL: 'http://192.168.5.106:5000',
+    baseURL: 'http://191.252.201.199:5000',
 });
 
 // Interceptor para lidar com erros

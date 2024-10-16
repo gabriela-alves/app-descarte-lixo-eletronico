@@ -99,7 +99,6 @@ export default function Index() {
     if (permissionResult.granted === false) {
       alert('Você precisa conceder permissão para usar a câmera!');
 
-      setIsLoading(true);
       return;
     }
 
@@ -148,9 +147,8 @@ export default function Index() {
 
     } catch (error) {
       console.error('Erro ao enviar a imagem:', error);
-    } finally {
-      setIsLoading(false); // Desativa o carregamento
     }
+    setIsLoading(false);
   }
 
   return (
@@ -158,8 +156,14 @@ export default function Index() {
 
     <View style={styles.container}>
       {/* Título */}
+      {isLoading && (
+        <Image
+          source={require('@/assets/gifs/loading.gif')}
+          style={styles.carregamento}
+        />
+      )}
       <View style={[styles.topo]}>
-        <TouchableOpacity activeOpacity={0.5} onPress={() => navigation.navigate('Home')}>
+        <TouchableOpacity activeOpacity={0.5} onPress={() => navigation.navigate('Home')} disabled={isLoading} style={isLoading ? styles.buttonDisabled : null}>
           <Image source={require('@/assets/images/seta.png')} style={styles.seta} />
         </TouchableOpacity>
         <Text style={[styles.titulo]}>Descarte</Text>
@@ -234,6 +238,19 @@ const styles = StyleSheet.create({
     marginTop: 50,
     margin: 20,
     gap: 8
+  },
+
+  buttonDisabled:{
+    opacity: 0.5
+  },
+
+  carregamento:{
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    width:150,
+    height: 150,
+    transform: [{ translateX: -75 }, { translateY: -75 }]
   },
 
   topo: {

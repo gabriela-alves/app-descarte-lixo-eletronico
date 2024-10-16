@@ -19,6 +19,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
+      },
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION"
+      ],
+      "package": "com.carlosdv1.tech_app",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDnmGknEXFcKMxx0lxrKb84XgqvNmvbJzc"
+        }
       }
     },
     "web": {
@@ -31,6 +41,11 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "db1b51a0-5bdf-4e3e-83b5-865acdac4ffa"
+      }
     }
   }
 }
